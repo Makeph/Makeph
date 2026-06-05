@@ -35,6 +35,7 @@ in real costs.** If a result can't survive that, it doesn't get capital.
 | **[prop-ev](https://github.com/Makeph/prop-ev)** | Monte Carlo for prop-firm challenges: *P(pass)* and whether the attempt is **+EV after the fee**. Spoiler — usually not. Includes a **[live browser calculator](https://makeph.github.io/prop-ev/)**. |
 | **[binance-fapi-ws](https://github.com/Makeph/binance-fapi-ws)** | A small, robust async reader for the Binance USDⓈ-M Futures WebSocket. Auto-reconnect, dead-connection detection, and the streams that *actually deliver* (some aggregated ones silently send nothing). |
 | **[trading-bot-ops](https://github.com/Makeph/trading-bot-ops)** | No-Kubernetes 24/7 supervision kit — PowerShell watchdog (Windows) + templated systemd unit & VPS bootstrap (Linux). Auto-restart, stall detection, alerts. |
+| **[telegram-ctl](https://github.com/Makeph/telegram-ctl)** | Remote-control & alert any Python daemon from a Telegram chat. Decorator `/commands`, non-blocking alerts, throttled heartbeats. Zero deps. |
 
 ### 🧭 How I think about strategy work
 
