@@ -37,6 +37,24 @@ in real costs.** If a result can't survive that, it doesn't get capital.
 | **[trading-bot-ops](https://github.com/Makeph/trading-bot-ops)** | No-Kubernetes 24/7 supervision kit — PowerShell watchdog (Windows) + templated systemd unit & VPS bootstrap (Linux). Auto-restart, stall detection, alerts. |
 | **[telegram-ctl](https://github.com/Makeph/telegram-ctl)** | Remote-control & alert any Python daemon from a Telegram chat. Decorator `/commands`, non-blocking alerts, throttled heartbeats. Zero deps. |
 
+### 🛠 Also open-sourced — tools
+
+Outside the trading loop I ship small, sharp, mostly **single-binary,
+zero-dependency, local-first** tools. A few:
+
+| Repo | What it is |
+|---|---|
+| **[forgewatch](https://github.com/Makeph/forgewatch)** | Single-binary, local-first CI runner — DAG-scheduled YAML pipelines, content-addressed job cache, live web dashboard. `pip install forgewatch-ci`. Rust. |
+| **[gravedigger](https://github.com/Makeph/gravedigger)** | From-scratch x86-64 disassembler, ELF/PE loader, emulator & debugger. Zero-dependency Rust. |
+| **[ghostwire](https://github.com/Makeph/ghostwire)** | Local-first userspace mesh VPN — Noise-encrypted UDP tunnels, WireGuard-compatible config, zero servers. Rust. |
+| **[trapdoor](https://github.com/Makeph/trapdoor)** | Interactive step-debugger for Bash — no patched bash, no ptrace, just the DEBUG trap and `/dev/tcp`. Rust. |
+| **[terrier](https://github.com/Makeph/terrier)** | Local-first memory for coding agents — index sessions + notes into one SQLite FTS5 file. Search, recap, graph. Zero deps. |
+| **[leakhound](https://github.com/Makeph/leakhound)** | Zero-dependency C++17 secret scanner — AWS/GitHub/Slack/Stripe keys, PEM, JWTs, entropy heuristics. CI-friendly exit codes. |
+| **[dep-xray](https://github.com/Makeph/dep-xray)** | In-browser, zero-dependency npm supply-chain risk scanner for `package.json`. |
+| **[cinderwave](https://github.com/Makeph/cinderwave)** | Open-hardware acid groovebox — RP2040 firmware + a portable, host-testable C++17 DSP core. |
+| **[vibe-tools](https://github.com/Makeph/vibe-tools)** | Three small CLIs for the new pains of coding with AI — `llmcost`, `ctxpack`, `slopcheck`. |
+| **[rankforge](https://github.com/Makeph/rankforge)** | Local-first SEO autopilot — keyword research, content briefs, on-page optimization via pluggable LLM engines. |
+
 ### 🧭 How I think about strategy work
 
 - **Kill your darlings.** The PF 2.5 backtest that made me richest on paper was
