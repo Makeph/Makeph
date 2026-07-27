@@ -1,22 +1,47 @@
-<h1 align="center">I build tools from scratch — local-first, low-dependency, one binary each.</h1>
+<h1 align="center">I build from the metal up — local-first, low-dependency, one binary each.</h1>
 
 <p align="center">
-  <em>A Bash debugger with no ptrace. An x86-64 disassembler with no capstone. A VPN with no server. Most of what I ship reimplements a layer from the metal up and runs offline with nothing to sign into — because understanding the layer beats gluing over it.</em>
+  <em>A Bash debugger with no ptrace. An x86-64 disassembler with no capstone. A VPN with no server — and, lately, an edge stack that runs a greenhouse or a chicken coop offline and watches it for drift. Own the layer, run it local, sign into nothing.</em>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white" />
   <img src="https://img.shields.io/badge/C%2B%2B17-00599C?style=flat-square&logo=cplusplus&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/MicroPython-2B2728?style=flat-square&logo=micropython&logoColor=white" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white" />
   <img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" />
 </p>
 
 ---
 
-### 🛠 What I ship
+### 🌐 HiddenGrid — a local-first edge stack
+
+Real controllers on cheap ESP32s, and the hub that ties them together. The safety
+logic lives **in firmware** — a closing coop door stops on an obstacle, on
+overcurrent, on a move timeout — the whole thing runs with **no network**, and every
+line of logic is tested on a desktop with **no hardware**, then gated by CI.
+
+| Layer | Repo | What it is |
+|---|---|---|
+| Control | **[greenhouse](https://github.com/Makeph/greenhouse)** | ESP32/MicroPython greenhouse controller — light, aeration, heat and pulse irrigation with hysteresis; offline-first; a wrap-safe uptime clock so it survives a season unattended. |
+| Control | **[coopilot](https://github.com/Makeph/coopilot)** | Connected chicken-coop controller — an autonomous pop-hole door with real safety interlocks (anti-pinch, overcurrent, timeout, limit switches) as a host-tested state machine. |
+| Hub | **[plexus](https://github.com/Makeph/plexus)** | Ingests the controllers' MQTT into a Gorilla-compressed time-series, watches every stream for drift and stuck sensors, serves one dashboard — stdlib only, no database, no broker service. |
+
+Three more repos take the **industrial** thesis further:
+**[industrial-retrofit](https://github.com/Makeph/industrial-retrofit)** speaks real
+Modbus-TCP (pure stdlib) to turn a legacy machine's registers into telemetry, anomalies
+and live OEE — point it at a real PLC;
+**[line-twin](https://github.com/Makeph/line-twin)** analyses a line from your *measured*
+cycle times, validates its model against the line's real output, and quantifies the ROI
+of fixing the bottleneck; and
+**[gorilla-tsc](https://github.com/Makeph/gorilla-tsc)** is the time-series codec `plexus`
+stores with.
+
+---
+
+### 🛠 Underneath it — the systems lab
 
 I write tools the way I want to use them: **single binary, few or zero
 dependencies, local-first.** No telemetry, no account, nothing that only works
@@ -24,8 +49,6 @@ while some SaaS is up. When a tool reimplements something from scratch — a
 debugger without `ptrace`, a disassembler without a library, a mesh VPN without
 a server — it's because owning the layer beats gluing over it. Most ship to
 crates.io / PyPI so you can `pip install` a compiled binary and go.
-
-### 📦 Tools
 
 | Repo | What it is | Lang |
 |---|---|---|
@@ -63,8 +86,9 @@ domain.
   file to ship. Supply chain you don't pull is supply chain that can't bite you.
 - **Local-first, no cloud.** If a job is local, it shouldn't need an account, a
   server, or a network. Offline is the default, not a fallback.
-- **Boring infra wins.** Single binary, real tests, CI-friendly exit codes. A
-  tool that's down at 3am isn't a tool.
+- **Evidence over optimism.** Test the logic without the hardware, flag the failure
+  in plain words, and label a simulation a simulation. A tool that's down at 3am —
+  or a benchmark that only works in-sample — isn't a tool.
 
 <details>
 <summary>📊 GitHub stats</summary>
